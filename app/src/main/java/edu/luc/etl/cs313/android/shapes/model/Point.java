@@ -8,9 +8,12 @@ public class Point extends Location {
     // TODO your job
     // HINT: use a circle with radius 0 as the shape!
 
+
     public Point(final int x, final int y) {
-        super(-1, -1, null);
+        super(x, y, new Circle(0));
         assert x >= 0;
         assert y >= 0;
     }
+    public int getX() { return super.getX(); }
+    public int getY() { return super.getY(); }
 }
