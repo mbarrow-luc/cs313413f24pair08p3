@@ -45,6 +45,10 @@ public class Draw implements Visitor<Void> {
     @Override
     public Void onGroup(final Group g) {
 
+        for (Shape s : g.getShapes()) {
+            s.accept(this);
+        }
+
         return null;
     }
 
