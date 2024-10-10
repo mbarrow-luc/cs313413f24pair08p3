@@ -20,12 +20,13 @@ android {
     }
 
     buildTypes {
-        debug {
-            testCoverageEnabled true
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            enableUnitTestCoverage true
+            enableAndroidTestCoverage true
         }
     }
     compileOptions {
@@ -35,6 +36,7 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    namespace 'edu.luc.etl.cs313.android.shapes.android'
 }
 
 dependencies {
