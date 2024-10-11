@@ -84,7 +84,7 @@ public class Draw implements Visitor<Void> {
 
         paint.setStyle(Style.STROKE);
         o.getShape().accept(this);
-
+        paint.setStyle(Style.STROKE);
 
         return null;
     }
