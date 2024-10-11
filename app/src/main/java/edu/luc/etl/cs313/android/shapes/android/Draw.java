@@ -5,6 +5,10 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import edu.luc.etl.cs313.android.shapes.model.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * A Visitor for drawing a shape to an Android canvas.
  */
@@ -31,7 +35,7 @@ public class Draw implements Visitor<Void> {
     @Override
     public Void onStrokeColor(final StrokeColor c) {
 
-        var prevColor = paint.getColor();
+        final int prevColor = paint.getColor();
         paint.setColor(c.getColor());
         c.getShape().accept(this);
         paint.setColor(prevColor);
@@ -62,8 +66,8 @@ public class Draw implements Visitor<Void> {
     @Override
     public Void onLocation(final Location l) {
 
-        var x = (float) l.getX();
-        var y = (float) l.getY();
+        final float x = (float) l.getX();
+        final float y = (float) l.getY();
         canvas.translate(x, y);
         l.getShape().accept(this);
         canvas.translate(-x, -y);
@@ -92,9 +96,20 @@ public class Draw implements Visitor<Void> {
     @Override
     public Void onPolygon(final Polygon s) {
 
-        final float[] pts = null;
+        final int size = s.getPoints().size() * 2;
+        final float[] pts = new float[size];
+        List<Integer> tempPts = new ArrayList<>(size);
+
+        for (Point p : s.getPoints()) {
+            tempPts.add(p.getX());
+            tempPts.add(p.getY());
+        }
+        for (int i=0; i<pts.length; i++) {
+            pts[i] = tempPts.get(i);
+        }
 
         canvas.drawLines(pts, paint);
+
         return null;
     }
 }
