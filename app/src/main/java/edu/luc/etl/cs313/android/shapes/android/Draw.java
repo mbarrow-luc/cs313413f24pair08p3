@@ -44,7 +44,7 @@ public class Draw implements Visitor<Void> {
 
         paint.setStyle(Style.FILL_AND_STROKE);
         f.getShape().accept(this);
-        paint.setStyle(null);
+        paint.setStyle(Style.STROKE);
 
         return null;
     }
@@ -84,7 +84,7 @@ public class Draw implements Visitor<Void> {
 
         paint.setStyle(Style.STROKE);
         o.getShape().accept(this);
-        paint.setStyle(null);
+
 
         return null;
     }
