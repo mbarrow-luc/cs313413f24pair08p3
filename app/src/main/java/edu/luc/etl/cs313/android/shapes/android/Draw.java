@@ -107,7 +107,7 @@ public class Draw implements Visitor<Void> {
         }
 
         tempPts.add(tempPts.remove(0));
-        tempPts.add(tempPts.remove(1));
+        tempPts.add(tempPts.remove(0));
 
         for (int i=0; i<pts.length; i++) {
             pts[i] = (float) tempPts.get(i);
