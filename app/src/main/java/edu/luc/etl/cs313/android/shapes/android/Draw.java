@@ -6,7 +6,6 @@ import android.graphics.Paint.Style;
 import edu.luc.etl.cs313.android.shapes.model.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -109,7 +108,8 @@ public class Draw implements Visitor<Void> {
         tempPts.add(tempPts.remove(0));
         tempPts.add(tempPts.remove(0));
 
-        for (int i=0; i<pts.length; i++) {
+        assert tempPts.size() == pts.length;
+        for (int i=0; i<tempPts.size(); i++) {
             pts[i] = (float) tempPts.get(i);
         }
 
